@@ -20,7 +20,7 @@ int main(){
         char copia[512];
         strcpy(copia, expressaoUsuario);
         printf("Copia da expressao: %s\n", getFormaInFixa(copia));
-        printf("Valor pos-fixa: %.1f\n", getValorPosFixa(expressaoUsuario));
+        printf("Valor pos-fixa: %.2f\n", getValorPosFixa(expressaoUsuario));
     }
 
     return 0;

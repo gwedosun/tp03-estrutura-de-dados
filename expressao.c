@@ -138,7 +138,7 @@ char * getFormaInFixa(char * String){
             char * A = desempilharString(&p);
             char novaExpressao[512];
 
-            sprintf(novaExpressao, "(%s+%s)", A, B);
+            sprintf(novaExpressao, "%s+%s", A, B);
 
             empilharString(&p, novaExpressao);
 
@@ -147,7 +147,7 @@ char * getFormaInFixa(char * String){
             char * A = desempilharString(&p);
             char novaExpressao[512];
 
-            sprintf(novaExpressao, "(%s-%s)", A, B);
+            sprintf(novaExpressao, "%s-%s", A, B);
 
             empilharString(&p, novaExpressao);
 
@@ -156,16 +156,45 @@ char * getFormaInFixa(char * String){
             char * A = desempilharString(&p);
             char novaExpressao[512];
 
-            sprintf(novaExpressao, "(%s*%s)", A, B);
+            char A_formatado[512];
+            if(strchr(A, '+') != NULL || strchr(A, '-') != NULL){
+                 sprintf(A_formatado, "(%s)", A);
+            } else {
+                 strcpy(A_formatado, A);
+         }
 
+            char B_formatado[512];
+            if(strchr(B, '+') != NULL || strchr (B, '-') != NULL){
+            sprintf(B_formatado, "(%s)", B);
+         } else {
+            strcpy(B_formatado, B);
+         }
+
+            sprintf(novaExpressao, "%s*%s", A_formatado, B_formatado);
+            
             empilharString(&p, novaExpressao);
+
 
         } else if(strcmp(token, "/") == 0){
             char * B = desempilharString(&p);
             char * A = desempilharString(&p);
             char novaExpressao[512];
 
-            sprintf(novaExpressao, "(%s/%s)", A, B);
+            char A_formatado[512];
+            if(strchr(A, '+') != NULL || strchr(A, '-') != NULL){
+                 sprintf(A_formatado, "(%s)", A);
+            } else {
+                 strcpy(A_formatado, A);
+         }
+
+            char B_formatado[512];
+            if(strchr(B, '+') != NULL || strchr (B, '-') != NULL){
+            sprintf(B_formatado, "(%s)", B);
+         } else {
+            strcpy(B_formatado, B);
+         }
+
+            sprintf(novaExpressao, "%s*%s", A_formatado, B_formatado);
 
             empilharString(&p, novaExpressao);
 
