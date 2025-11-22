@@ -6,6 +6,11 @@
 #include "expressao.h"
 
 typedef struct {
+    float dados[512];
+    int topo;
+} Pilha;
+
+typedef struct {
     char dados[512][512];
     int topo;
 } PilhaString;
@@ -182,6 +187,46 @@ char * getFormaInFixa(char * String){
 
             empilharString(&p, novaExpressao);
 
+        } else if(strcmp(token, "sen") == 0){
+            char * A = desempilharString(&p);
+            char novaExpressao[512];
+
+            sprintf(novaExpressao, "sen(%s)", A);
+
+            empilharString(&p, novaExpressao);
+
+        } else if(strcmp(token, "cos") == 0){
+            char * A = desempilharString(&p);
+            char novaExpressao[512];
+
+            sprintf(novaExpressao, "cos(%s)", A);
+
+            empilharString(&p, novaExpressao);
+
+        } else if(strcmp(token, "tg") == 0){
+            char * A = desempilharString(&p);
+            char novaExpressao[512];
+
+            sprintf(novaExpressao, "tg(%s)", A);
+
+            empilharString(&p, novaExpressao);
+
+        } else if(strcmp(token, "log") == 0){
+            char * A = desempilharString(&p);
+            char novaExpressao[512];
+
+            sprintf(novaExpressao, "log(%s)", A);
+
+            empilharString(&p, novaExpressao);
+        
+        } else if(strcmp(token, "raiz") == 0){
+            char * A = desempilharString(&p);
+            char novaExpressao[512];
+
+            sprintf(novaExpressao, "raiz(%s)", A);
+
+            empilharString(&p, novaExpressao);
+        
         } else {
             empilharString(&p, token);
         }
